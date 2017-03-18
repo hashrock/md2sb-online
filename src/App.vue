@@ -1,8 +1,21 @@
 <template>
   <div id="app">
     <div class="nav">
-      ScrapBox Converter
-    </div>
+      <svg id="i-edit" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="margin: 0.5rem;">
+          <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+      </svg>
+      <span> 
+        Online ScrapBox Converter
+      </span>
+      <select v-model="mode">
+        <option value="toScrapBox">Markdown -> ScrapBox</option>
+        <option value="toMarkdown">ScrapBox -> Markdown</option>
+      </select>
+
+      <a href="https://github.com/hashrock/md2sb-online">
+        GitHub
+      </a>
+   </div>
     <div class="editor">
       <textarea class="input" v-model="input" cols="30" rows="10"></textarea>
       <textarea v-model="output" name="" id="" cols="30" rows="10"></textarea>
@@ -21,13 +34,18 @@ export default {
     return {
       input: ``,
       output: "",
-      msg: 'Welcome to Your Vue.js App'
+      mode: "toScrapBox",
     }
   },
   mounted:function(){
     this.$watch("input", async (input)=>{
-      var oinput = Util.precompileList(input)
-      this.output = await md2sb(oinput)
+      if(this.mode === "toMarkdown"){
+        this.output = Util.scrapboxToMarkdown(input)
+      }
+      if(this.mode === "toScrapBox"){
+        var oinput = Util.precompileList(input)
+        this.output = await md2sb(oinput)
+      }
     })
     this.input = `# Markdown から ScrapBoxへ変換します（md2sb利用）
 
@@ -56,7 +74,11 @@ export default {
     padding: 1rem;
   }
   .nav{
-    line-height: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background: #25ab70;
+    color: white;
   }
   .editor{
     flex: 1;
@@ -66,5 +88,8 @@ export default {
     background: #333;
     color: white;
   }
-
+  select {
+    font-size: 1rem;
+    margin: 1rem;
+  }
 </style>
