@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/hashrock/md2sb-online/compare/v1.1.1...v1.1.2) (2017-03-18)
+
+
+### Bug Fixes
+
+* **app:** モード切り替え時にもコンバートが走るよう変更 ([f909aec](https://github.com/hashrock/md2sb-online/commit/f909aec))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/hashrock/md2sb-online/compare/v1.1.0...v1.1.1) (2017-03-18)
 
