@@ -38,9 +38,9 @@ function scrapboxToMarkdown(input){
 //    {name: "list-strong-style-text", pattern: / /, action: ""},
     {name: "list", pattern: /^( +)/, action: "$1$1- "},
 //    {name: "paragraph", pattern: / /, action: ""},
-    {name: "strike", pattern: /\[- (.+)]/, action: "~~$1~~"},
-    {name: "strong-italic", pattern: /\[\*\/ (.+)]/g, action: "***$1***"},
-    {name: "strong", pattern: /\[\* (.+)]/g, action: "**$1**"},
+    {name: "strike", pattern: /\[- ([^\]]+)]/, action: "~~$1~~"},
+    {name: "strong-italic", pattern: /\[\*\/ ([^\]]+)]/g, action: "***$1***"},
+    {name: "strong", pattern: /\[\* ([^\]]+)]/g, action: "**$1**"},
 //    {name: "table", pattern: / /, action: ""},
   ]
 

@@ -2,8 +2,9 @@ var util = require("./src/util")
 var test = require('tape');
 
 test('markdown', function (t) {
-    t.plan(7);
+    t.plan(8);
     t.equal('**test**', util.scrapboxToMarkdown(`[* test]`));
+    t.equal('**test** is **test**', util.scrapboxToMarkdown(`[* test] is [* test]`));
     t.equal('~~test~~', util.scrapboxToMarkdown(`[- test]`));
     t.equal('# test', util.scrapboxToMarkdown(`[**** test]`));
 
