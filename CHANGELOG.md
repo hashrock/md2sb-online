@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/hashrock/md2sb-online/compare/v1.1.0...v1.1.1) (2017-03-18)
+
+
+### Bug Fixes
+
+* **sb2md:** strongのある程度以上の強度のものは、全部h1に変換 ([659c712](https://github.com/hashrock/md2sb-online/commit/659c712))
+* **sb2md:** 一行に強調が複数ある場合の不具合を修正 ([43d38f9](https://github.com/hashrock/md2sb-online/commit/43d38f9))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/hashrock/md2sb-online/compare/v1.0.1...v1.1.0) (2017-03-18)
 
