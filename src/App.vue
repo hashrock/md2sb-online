@@ -37,8 +37,8 @@ export default {
       mode: "toScrapBox",
     }
   },
-  mounted:function(){
-    this.$watch("input", async (input)=>{
+  methods: {
+    async update(input){
       if(this.mode === "toMarkdown"){
         this.output = Util.scrapboxToMarkdown(input)
       }
@@ -46,6 +46,14 @@ export default {
         var oinput = Util.precompileList(input)
         this.output = await md2sb(oinput)
       }
+    }
+  },
+  mounted:function(){
+    this.$watch("mode", ()=>{
+      this.update(this.input)
+    })
+    this.$watch("input", (input)=>{
+      this.update(input)
     })
     this.input = `# Markdown から ScrapBoxへ変換します（md2sb利用）
 
