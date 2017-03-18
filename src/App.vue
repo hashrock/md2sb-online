@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <textarea v-model="input" cols="30" rows="10"></textarea>
-    <textarea v-model="output" name="" id="" cols="30" rows="10"></textarea>
+    <div class="nav">
+      ScrapBox Converter
+    </div>
+    <div class="editor">
+      <textarea class="input" v-model="input" cols="30" rows="10"></textarea>
+      <textarea v-model="output" name="" id="" cols="30" rows="10"></textarea>
+    </div>
   </div>
 </template>
 
 <script>
-//import * as md2sb from "md2sb"
 import Vue from 'vue'
 import md2sb from 'md2sb'
-
 
 export default {
   name: 'app',
@@ -41,12 +44,25 @@ export default {
   }
   #app{
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
   }
   textarea{
     font-size: 16px;
     flex: 1;
+    padding: 1rem;
+  }
+  .nav{
+    line-height: 3rem;
+  }
+  .editor{
+    flex: 1;
+    display: flex;
+  }
+  .input{
+    background: #333;
+    color: white;
   }
 
 </style>
