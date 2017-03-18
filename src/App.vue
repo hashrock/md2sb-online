@@ -13,6 +13,7 @@
 <script>
 import Vue from 'vue'
 import md2sb from 'md2sb'
+import * as Util from "./util"
 
 export default {
   name: 'app',
@@ -25,7 +26,8 @@ export default {
   },
   mounted:function(){
     this.$watch("input", async (input)=>{
-      this.output = await md2sb(input)
+      var oinput = Util.precompileList(input)
+      this.output = await md2sb(oinput)
     })
     this.input = `# Markdown から ScrapBoxへ変換します（md2sb利用）
 
