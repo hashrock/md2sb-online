@@ -5,7 +5,7 @@ test('markdown', function (t) {
     t.plan(7);
     t.equal('**test**', util.scrapboxToMarkdown(`[* test]`));
     t.equal('~~test~~', util.scrapboxToMarkdown(`[- test]`));
-    t.equal('# test', util.scrapboxToMarkdown(`[#### test]`));
+    t.equal('# test', util.scrapboxToMarkdown(`[**** test]`));
 
     //list
     t.equal(`  - first`, util.scrapboxToMarkdown(` first`))

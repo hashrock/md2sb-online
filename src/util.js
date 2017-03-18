@@ -29,7 +29,7 @@ function scrapboxToMarkdown(input){
 //    {name: "blockquote", pattern: / /, action: ""},
 //    {name: "code", pattern: / /, action: ""},
 //    {name: "codeblock", pattern: / /, action: ""},
-    {name: "heading", pattern: /\[#* (.+)]/, action: "# $1"},
+    {name: "heading", pattern: /\[\*\*+ (.+)]/, action: "# $1"},
 //    {name: "hr", pattern: / /, action: ""},
     {name: "image", pattern: /\[(.*[png|jpeg|jpg|bmp|svg|gif])\]/, action: "![image]($1)"},
 //    {name: "italic", pattern: / /, action: ""},
