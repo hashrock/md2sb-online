@@ -1,29 +1,15 @@
 {
   "name": "md2sb-online",
-  "description": "A Vue.js project",
   "version": "1.1.2",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "test": "node test.js | tap-diff"
-  },
-  "dependencies": {
-    "vue": "^2.2.1"
+    "build": "poi --prod",
+    "dev": "poi --serve"
   },
   "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-preset-latest": "^6.0.0",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "md2sb": "^0.3.1",
-    "tap-diff": "^0.1.1",
-    "tape": "^4.6.3",
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "md2sb": "^4.0.5",
+    "poi": "^12.4.2",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
   }
 }
