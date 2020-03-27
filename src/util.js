@@ -12,7 +12,7 @@
 function precompileList(input){
   var list = input.split("\n")
   var convertedList = list.map(line => {
-    var pattern = /^( *)[-*+] /
+    var pattern = /^([ \t]*)[-*+] /
     var matched = pattern.exec(line)
     if(matched){
       return " " + line.replace(pattern, matched[1])
@@ -23,8 +23,9 @@ function precompileList(input){
   return convertedList.join("\n")
 }
 
-
 function scrapboxToMarkdown(input){
+  const converted = input.replace(/\t/g, " ")
+
   var patterns = [
 //    {name: "blockquote", pattern: / /, action: ""},
 //    {name: "code", pattern: / /, action: ""},
@@ -44,7 +45,7 @@ function scrapboxToMarkdown(input){
 //    {name: "table", pattern: / /, action: ""},
   ]
 
-  return input.split("\n").map(line=>{
+  return converted.split("\n").map(line=>{
     var output = line
     patterns.forEach(pattern=>{
       if(pattern.action){

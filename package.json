@@ -9,6 +9,7 @@
   "devDependencies": {
     "md2sb": "^4.0.5",
     "poi": "^12.4.2",
+    "tape": "^4.13.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   }
