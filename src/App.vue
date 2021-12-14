@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import md2sb from 'md2sb'
 import * as Util from "./util"
 
@@ -43,12 +42,11 @@ export default {
         this.output = Util.scrapboxToMarkdown(input)
       }
       if(this.mode === "toScrapBox"){
-        var oinput = Util.precompileList(input)
-        this.output = await md2sb(oinput)
+        this.output = await md2sb(input)
       }
     }
   },
-  mounted:function(){
+  mounted(){
     this.$watch("mode", ()=>{
       this.update(this.input)
     })
@@ -60,7 +58,7 @@ export default {
 - md2sb https://github.com/pastak/md2sb
 - hey
 - hoo
- - bar`
+  - bar`
   }
 }
 </script>
