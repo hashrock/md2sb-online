@@ -26,7 +26,8 @@
     <div class="editor">
       <div class="editor__wrapper">
         <textarea ref="input" class="input" v-model="input" cols="30" rows="10"></textarea>
-        <button class="editor__button" @click="pasteFromClipboard">Paste</button>
+        <!-- 破壊的操作だがUndoができず危険なので一旦削除 -->
+        <!-- <button class="editor__button" @click="pasteFromClipboard">Paste</button> -->
       </div>
       <div class="editor__wrapper">
         <textarea ref="output" class="output" v-model="output" name="" id="" cols="30" rows="10"></textarea>
