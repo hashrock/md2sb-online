@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
     "md2sb": "^5.1.2",
     "tape": "^4.13.2",
-    "vite": "^2.6.4"
+    "vite": "^2.6.4",
+    "vitest": "^0.9.3",
+    "vue-tsc": "^0.29.8"
   },
   "dependencies": {
     "vue": "^3.2.16"

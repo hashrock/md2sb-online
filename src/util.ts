@@ -1,4 +1,4 @@
-export function scrapboxToMarkdown(input){
+export function scrapboxToMarkdown(input: string){
   const converted = input.replace(/\t/g, " ")
 
   var patterns = [
@@ -25,9 +25,6 @@ export function scrapboxToMarkdown(input){
     patterns.forEach(pattern=>{
       if(pattern.action){
         output = output.replace(pattern.pattern, pattern.action)
-      }
-      if(pattern.callback){
-        output = pattern.callback(output)
       }
     })
     return output
