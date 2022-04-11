@@ -24,8 +24,14 @@
       </a>
     </div>
     <div class="editor">
-      <textarea class="input" v-model="input" cols="30" rows="10"></textarea>
-      <textarea class="output" v-model="output" name="" id="" cols="30" rows="10"></textarea>
+      <div class="editor__wrapper">
+        <textarea ref="input" class="input" v-model="input" cols="30" rows="10"></textarea>
+        <button class="editor__button" @click="pasteFromClipboard">Paste</button>
+      </div>
+      <div class="editor__wrapper">
+        <textarea ref="output" class="output" v-model="output" name="" id="" cols="30" rows="10"></textarea>
+        <button class="editor__button" @click="copyToClipboard">Copy</button>
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +58,19 @@ export default defineComponent({
       if (this.mode === "toScrapBox") {
         this.output = await md2sb(input)
       }
+    },
+    copyToClipboard(){
+      const textarea = this.$refs.output as HTMLTextAreaElement
+      textarea.select()
+      navigator.clipboard.writeText(this.output).then(function() {
+      });
+    },
+    pasteFromClipboard(){
+      const textarea = this.$refs.input as HTMLTextAreaElement
+      textarea.select()
+      navigator.clipboard.readText().then((text) =>{
+        this.input = text
+      });
     }
   },
   mounted() {
@@ -117,11 +136,38 @@ textarea {
   display: flex;
 }
 
+.editor__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+.editor__button {
+  position: absolute;
+  bottom: 0rem;
+  width: 10rem;
+  right: calc(50% - 5rem);
+  padding: 0.5em;
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.25em;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.editor__button:hover {
+  background-color: #555;
+  opacity: 1;
+}
+
 .input {
   background: #333;
   color: white;
   border: none;
 }
+
 .output {
   background: #444;
   color: white;
