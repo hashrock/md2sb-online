@@ -131,6 +131,9 @@ textarea {
 select {
   font-size: 1rem;
   margin: 1rem;
+  padding: 0.25em 0.75em;
+  border-radius: 0.25em;
+  border: 1px solid white;
 }
 
 .github-icon {
