@@ -24,7 +24,7 @@
       </a>
     </div>
     <div class="editor">
-      <div class="editor__wrapper" :class="{draged: isDragEnter}"
+      <div class="editor__wrapper" :class="{draged: fileDragged}"
            @dragenter="inputDragEnter" @dragleave="inputDragLeave" @drop="inputDropFile">
         <textarea ref="input" class="input" v-model="input" cols="30" rows="10"></textarea>
         <!-- 破壊的操作だがUndoができず危険なので一旦削除 -->
@@ -50,7 +50,7 @@ export default defineComponent({
       input: ``,
       output: "",
       mode: "toScrapBox",
-      isDragEnter: false,
+      fileDragged: false,
     }
   },
   methods: {
@@ -76,14 +76,14 @@ export default defineComponent({
       });
     },
     inputDragEnter(){
-      this.isDragEnter = true
+      this.fileDragged = true
     },
     inputDragLeave(){
-      this.isDragEnter = false 
+      this.fileDragged = false 
     },
     async inputDropFile(event: DragEvent){
       event.preventDefault();
-      this.isDragEnter = false;
+      this.fileDragged = false;
 
       const file = event.dataTransfer?.files[0];
       if(!file) return;
