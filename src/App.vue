@@ -24,7 +24,8 @@
       </a>
     </div>
     <div class="editor">
-      <div class="editor__wrapper">
+      <div class="editor__wrapper" :class="{draged: isDragEnter}"
+           @dragenter="inputDragEnter" @dragleave="inputDragLeave" @drop="inputDropFile">
         <textarea ref="input" class="input" v-model="input" cols="30" rows="10"></textarea>
         <!-- 破壊的操作だがUndoができず危険なので一旦削除 -->
         <!-- <button class="editor__button" @click="pasteFromClipboard">Paste</button> -->
@@ -49,6 +50,7 @@ export default defineComponent({
       input: ``,
       output: "",
       mode: "toScrapBox",
+      isDragEnter: false,
     }
   },
   methods: {
@@ -72,6 +74,28 @@ export default defineComponent({
       navigator.clipboard.readText().then((text) =>{
         this.input = text
       });
+    },
+    inputDragEnter(){
+      this.isDragEnter = true
+    },
+    inputDragLeave(){
+      this.isDragEnter = false 
+    },
+    async inputDropFile(event: DragEvent){
+      event.preventDefault();
+      this.isDragEnter = false;
+
+      const file = event.dataTransfer?.files[0];
+      if(!file) return;
+
+      if(!file.type.startsWith('text')) {
+        const res = confirm(`ドロップされたファイルはテキストファイルではないようです。\n(${file.type})\nこのファイルを読み込んでもよろしいですか？`);
+        if(!res) return;
+      }
+
+      const buf = await file.arrayBuffer();
+      const text = new TextDecoder().decode(buf)
+      this.input = text
     }
   },
   mounted() {
@@ -167,6 +191,10 @@ textarea {
   background: #333;
   color: white;
   border: none;
+}
+
+.draged {
+  border: dashed 4px #299266;
 }
 
 .output {
