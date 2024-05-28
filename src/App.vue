@@ -7,11 +7,11 @@
           <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
         </svg>
         <h1>
-          Online ScrapBox Converter
+          Online Cosense Converter
         </h1>
         <select v-model="mode">
-          <option value="toScrapBox">Markdown -> ScrapBox</option>
-          <option value="toMarkdown">ScrapBox -> Markdown</option>
+          <option value="toCosense">Markdown -> Cosense</option>
+          <option value="toMarkdown">Cosense -> Markdown</option>
         </select>
       </div>
 
@@ -48,7 +48,7 @@ export default defineComponent({
     return {
       input: ``,
       output: "",
-      mode: "toScrapBox",
+      mode: "toCosense",
     }
   },
   methods: {
@@ -56,20 +56,20 @@ export default defineComponent({
       if (this.mode === "toMarkdown") {
         this.output = Util.scrapboxToMarkdown(input)
       }
-      if (this.mode === "toScrapBox") {
+      if (this.mode === "toCosense") {
         this.output = await md2sb(input)
       }
     },
-    copyToClipboard(){
+    copyToClipboard() {
       const textarea = this.$refs.output as HTMLTextAreaElement
       textarea.select()
-      navigator.clipboard.writeText(this.output).then(function() {
+      navigator.clipboard.writeText(this.output).then(function () {
       });
     },
-    pasteFromClipboard(){
+    pasteFromClipboard() {
       const textarea = this.$refs.input as HTMLTextAreaElement
       textarea.select()
-      navigator.clipboard.readText().then((text) =>{
+      navigator.clipboard.readText().then((text) => {
         this.input = text
       });
     }
@@ -81,7 +81,7 @@ export default defineComponent({
     this.$watch("input", (input: string) => {
       this.update(input)
     })
-    this.input = `# Markdown から ScrapBoxへ変換します（md2sb利用）
+    this.input = `# Markdown から Cosenseへ変換します（md2sb利用）
 
 - md2sb https://github.com/pastak/md2sb
 - hey
