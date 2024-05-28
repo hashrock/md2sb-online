@@ -12,16 +12,15 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
-          cache: 'yarn'
+          node-version: "18"
 
-      - run: yarn install
-      - run: yarn build
+      - run: npm install
+      - run: npm run build
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
